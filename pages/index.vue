@@ -12,58 +12,67 @@
         </p>
       </div>
       <div class="mt-5 flex justify-center">
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option1"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option1"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            options.passwordLength === PasswordLength.SIXTEEN
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="changePasswordLength(PasswordLength.SIXTEEN)"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              options.passwordLength === PasswordLength.SIXTEEN
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              16
-            </span>
-          </label>
+            16
+          </span>
         </div>
 
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option2"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option2"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            options.passwordLength === PasswordLength.THIRTYTWO
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="changePasswordLength(PasswordLength.THIRTYTWO)"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              options.passwordLength === PasswordLength.THIRTYTWO
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              32
-            </span>
-          </label>
+            32
+          </span>
         </div>
 
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option3"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option3"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            options.passwordLength === PasswordLength.SIXTYFOUR
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="changePasswordLength(PasswordLength.SIXTYFOUR)"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              options.passwordLength === PasswordLength.SIXTYFOUR
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              64
-            </span>
-          </label>
+            64
+          </span>
         </div>
       </div>
 
@@ -73,40 +82,46 @@
         </p>
       </div>
       <div class="mt-5 flex justify-center">
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option1"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option1"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            options.includeSymbols
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="options.includeSymbols = true"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              options.includeSymbols
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              Sim
-            </span>
-          </label>
+            Sim
+          </span>
         </div>
 
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option2"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option2"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            !options.includeSymbols
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="options.includeSymbols = false"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              !options.includeSymbols
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              Não
-            </span>
-          </label>
+            Não
+          </span>
         </div>
       </div>
 
@@ -114,40 +129,46 @@
         <p class="text-gray-100 text-2xl">Incluir Números (0-9)</p>
       </div>
       <div class="mt-5 flex justify-center">
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option1"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option1"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            options.includeNumbers
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="options.includeNumbers = true"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              options.includeNumbers
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              Sim
-            </span>
-          </label>
+            Sim
+          </span>
         </div>
 
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option2"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option2"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            !options.includeNumbers
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="options.includeNumbers = false"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              !options.includeNumbers
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              Não
-            </span>
-          </label>
+            Não
+          </span>
         </div>
       </div>
 
@@ -157,40 +178,46 @@
         </p>
       </div>
       <div class="mt-5 flex justify-center">
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option1"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option1"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            options.includeUppercase
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="options.includeUppercase = true"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              options.includeUppercase
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              Sim
-            </span>
-          </label>
+            Sim
+          </span>
         </div>
 
-        <div class="mx-5">
-          <input
-            class="sr-only"
-            id="option2"
-            type="radio"
-            tabindex="-1"
-          />
-          <label
-            for="option2"
-            class="block w-full p-3 border border-gray-200 rounded-lg"
-            tabindex="0"
+        <div
+          class="mx-5 cursor-pointer block p-3 rounded-lg"
+          :class="
+            !options.includeUppercase
+              ? 'bg-gray-100'
+              : 'border border-gray-200'
+          "
+          @click="options.includeUppercase = false"
+        >
+          <span
+            class="text-lg font-medium mx-10"
+            :class="
+              !options.includeUppercase
+                ? 'text-gray-900'
+                : 'text-gray-100'
+            "
           >
-            <span class="text-lg text-gray-100 font-medium mx-10">
-              Não
-            </span>
-          </label>
+            Não
+          </span>
         </div>
       </div>
       <div class="mt-10 max-w-lg mx-auto text-center">
@@ -220,3 +247,29 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+enum PasswordLength {
+  SIXTEEN = '16',
+  THIRTYTWO = '32',
+  SIXTYFOUR = '64',
+}
+
+interface OptionsState {
+  passwordLength: PasswordLength;
+  includeSymbols: boolean;
+  includeNumbers: boolean;
+  includeUppercase: boolean;
+}
+
+const options: OptionsState = reactive({
+  passwordLength: PasswordLength.SIXTYFOUR,
+  includeSymbols: true,
+  includeNumbers: true,
+  includeUppercase: true,
+});
+
+const changePasswordLength = (length: PasswordLength) => {
+  options.passwordLength = length;
+};
+</script>
