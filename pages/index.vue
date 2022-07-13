@@ -26,7 +26,14 @@
         <p class="text-gray-100 text-2xl">Sua senha gerada</p>
       </div>
       <!-- <ModalPasswordReadyModal /> -->
-      <div class="mt-10 max-w-lg mx-auto text-center">
+      <div
+        class="mt-10 mx-auto text-center"
+        :class="
+          options.passwordLength === PasswordLength.SIXTYFOUR
+            ? 'max-w-xl'
+            : 'max-w-lg'
+        "
+      >
         <input
           class="w-full p-3 text-sm border-gray-200 rounded-lg"
           placeholder="Sua senha aparecerá aqui"
@@ -89,8 +96,28 @@ const options: OptionsState = reactive({
 
 const generatedPassword: Ref<string> = ref('');
 
+const getCharset = (): string => {
+  var charset = 'abcdefghijklmnopqrstuvwxyz';
+  if (options.includeSymbols) {
+    charset = charset + '!@#$%^&*';
+  }
+  if (options.includeNumbers) {
+    charset = charset + '0123456789';
+  }
+  if (options.includeUppercase) {
+    charset = charset + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  }
+  return charset;
+};
+
 const generatePassword = () => {
-  console.log(options);
+  const length: Number = Number(options.passwordLength);
+  var charset: string = getCharset();
+  var retVal: string = '';
+  for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  generatedPassword.value = retVal;
 };
 
 const printOption = (option: string) => {
