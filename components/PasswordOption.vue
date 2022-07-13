@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <di @click="emitPrintOption">
     <div class="mt-10 max-w-lg mx-auto text-center">
       <p class="text-gray-100 text-2xl">
         {{ option.title }}
@@ -7,8 +7,7 @@
     </div>
     <div class="mt-5 flex justify-center">
       <div
-        v-for="(buttonValue, index) in option.buttons"
-        :key="index"
+        v-for="buttonValue in option.buttons"
         class="mx-5 cursor-pointer block p-3 rounded-lg"
         :class="
           options[option.category] === buttonValue
@@ -29,7 +28,7 @@
         </span>
       </div>
     </div>
-  </div>
+  </di>
 </template>
 
 <script setup lang="ts">
@@ -49,6 +48,12 @@ interface PasswordOptionProps {
   };
 }
 const props = defineProps<PasswordOptionProps>();
+
+const emit = defineEmits(['printOption']);
+
+const emitPrintOption = () => {
+  emit('printOption');
+};
 
 const getButtonLabel = (label: string | boolean) => {
   if (typeof label === 'boolean') {

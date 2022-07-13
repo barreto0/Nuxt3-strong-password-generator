@@ -7,15 +7,16 @@
         </p>
       </div>
       <PasswordOption
-        v-for="(option, index) in optionsArray"
-        :key="index"
+        v-for="option in optionsArray"
         :option="option"
         :options="options"
+        @printOption="() => printOption(option.title)"
       />
       <div class="mt-10 max-w-lg mx-auto text-center">
         <button
           type="submit"
           class="w-40 px-5 py-3 text-sm font-medium text-white bg-gray-800 rounded-lg"
+          @click="generatePassword"
         >
           Gerar senha
         </button>
@@ -24,6 +25,7 @@
       <div class="mt-10 max-w-lg mx-auto text-center">
         <p class="text-gray-100 text-2xl">Sua senha gerada</p>
       </div>
+      <!-- <ModalPasswordReadyModal /> -->
       <div class="mt-10 max-w-lg mx-auto text-center">
         <input
           class="w-full p-3 text-sm border-gray-200 rounded-lg"
@@ -87,7 +89,13 @@ const options: OptionsState = reactive({
 
 const generatedPassword: Ref<string> = ref('');
 
-const generatePassword = () => {};
+const generatePassword = () => {
+  console.log(options);
+};
+
+const printOption = (option: string) => {
+  console.log(option);
+};
 </script>
 
 <!-- const state = ref({
