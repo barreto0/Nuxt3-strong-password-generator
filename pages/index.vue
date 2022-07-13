@@ -6,220 +6,12 @@
           Gerador de senha forte 🔒
         </p>
       </div>
-      <div class="mt-10 max-w-lg mx-auto text-center">
-        <p class="text-gray-100 text-2xl">
-          Escolha o tamanho da senha
-        </p>
-      </div>
-      <div class="mt-5 flex justify-center">
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            options.passwordLength === PasswordLength.SIXTEEN
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="changePasswordLength(PasswordLength.SIXTEEN)"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              options.passwordLength === PasswordLength.SIXTEEN
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            16
-          </span>
-        </div>
-
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            options.passwordLength === PasswordLength.THIRTYTWO
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="changePasswordLength(PasswordLength.THIRTYTWO)"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              options.passwordLength === PasswordLength.THIRTYTWO
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            32
-          </span>
-        </div>
-
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            options.passwordLength === PasswordLength.SIXTYFOUR
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="changePasswordLength(PasswordLength.SIXTYFOUR)"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              options.passwordLength === PasswordLength.SIXTYFOUR
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            64
-          </span>
-        </div>
-      </div>
-
-      <div class="mt-10 max-w-lg mx-auto text-center">
-        <p class="text-gray-100 text-2xl">
-          Incluir símbolos (!@#$%^&*)
-        </p>
-      </div>
-      <div class="mt-5 flex justify-center">
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            options.includeSymbols
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="options.includeSymbols = true"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              options.includeSymbols
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            Sim
-          </span>
-        </div>
-
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            !options.includeSymbols
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="options.includeSymbols = false"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              !options.includeSymbols
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            Não
-          </span>
-        </div>
-      </div>
-
-      <div class="mt-10 max-w-lg mx-auto text-center">
-        <p class="text-gray-100 text-2xl">Incluir Números (0-9)</p>
-      </div>
-      <div class="mt-5 flex justify-center">
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            options.includeNumbers
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="options.includeNumbers = true"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              options.includeNumbers
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            Sim
-          </span>
-        </div>
-
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            !options.includeNumbers
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="options.includeNumbers = false"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              !options.includeNumbers
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            Não
-          </span>
-        </div>
-      </div>
-
-      <div class="mt-10 max-w-lg mx-auto text-center">
-        <p class="text-gray-100 text-2xl">
-          Incluir letras caixa alta (A-Z)
-        </p>
-      </div>
-      <div class="mt-5 flex justify-center">
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            options.includeUppercase
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="options.includeUppercase = true"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              options.includeUppercase
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            Sim
-          </span>
-        </div>
-
-        <div
-          class="mx-5 cursor-pointer block p-3 rounded-lg"
-          :class="
-            !options.includeUppercase
-              ? 'bg-gray-100'
-              : 'border border-gray-200'
-          "
-          @click="options.includeUppercase = false"
-        >
-          <span
-            class="text-lg font-medium mx-10"
-            :class="
-              !options.includeUppercase
-                ? 'text-gray-900'
-                : 'text-gray-100'
-            "
-          >
-            Não
-          </span>
-        </div>
-      </div>
+      <PasswordOption
+        v-for="(option, index) in optionsArray"
+        :key="index"
+        :option="option"
+        :options="options"
+      />
       <div class="mt-10 max-w-lg mx-auto text-center">
         <button
           type="submit"
@@ -233,12 +25,12 @@
         <p class="text-gray-100 text-2xl">Sua senha gerada</p>
       </div>
       <div class="mt-10 max-w-lg mx-auto text-center">
-        <label class="sr-only" for="name">Name</label>
         <input
           class="w-full p-3 text-sm border-gray-200 rounded-lg"
           placeholder="Sua senha aparecerá aqui"
           type="text"
           id="name"
+          v-model="generatedPassword"
         />
       </div>
     </div>
@@ -249,11 +41,35 @@
 </template>
 
 <script setup lang="ts">
-enum PasswordLength {
-  SIXTEEN = '16',
-  THIRTYTWO = '32',
-  SIXTYFOUR = '64',
-}
+import type { Ref } from 'vue';
+import { PasswordLength } from '@/enums/enums';
+
+const optionsArray = [
+  {
+    title: 'Escolha o tamanho da senha',
+    category: 'passwordLength',
+    buttons: [
+      PasswordLength.SIXTEEN,
+      PasswordLength.THIRTYTWO,
+      PasswordLength.SIXTYFOUR,
+    ],
+  },
+  {
+    title: 'Incluir símbolos (!@#$%^&*) ',
+    category: 'includeSymbols',
+    buttons: [true, false],
+  },
+  {
+    title: 'Incluir Números (0-9)',
+    category: 'includeNumbers',
+    buttons: [true, false],
+  },
+  {
+    title: 'Incluir letras caixa alta (A-Z)',
+    category: 'includeUppercase',
+    buttons: [true, false],
+  },
+];
 
 interface OptionsState {
   passwordLength: PasswordLength;
@@ -269,7 +85,24 @@ const options: OptionsState = reactive({
   includeUppercase: true,
 });
 
-const changePasswordLength = (length: PasswordLength) => {
-  options.passwordLength = length;
-};
+const generatedPassword: Ref<string> = ref('');
+
+const generatePassword = () => {};
 </script>
+
+<!-- const state = ref({
+  isVisible: true,
+  name: 'Markus',
+});
+
+// 1. You must use `.value` to access properties
+//    of a `ref()` object. With `reactive()` you
+//    could do `state.isVisible = false`.
+state.value.isVisible = false;
+
+// 2. You can swap the complete object. You can't
+//    do that with `reactive()` objects!
+state.value = {
+  isVisible: false,
+  name: 'John',
+}; -->
