@@ -1,5 +1,5 @@
 <template>
-  <di @click="emitPrintOption">
+  <div @click="emitPrintOption">
     <div class="mt-10 max-w-lg mx-auto text-center">
       <p class="text-gray-100 text-2xl">
         {{ option.title }}
@@ -28,7 +28,7 @@
         </span>
       </div>
     </div>
-  </di>
+  </div>
 </template>
 
 <script setup lang="ts">
